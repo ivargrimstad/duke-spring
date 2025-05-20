@@ -1,0 +1,23 @@
+<server description="Dukes Data Demo">
+    <featureManager>
+        <feature>springBoot-3.0</feature>
+        <platform>jakartaee-11.0</platform>
+        <feature>servlet</feature>
+        <feature>data</feature>
+    </featureManager>
+
+    <springBootApplication location="dukes-spring-0.0.1-SNAPSHOT.jar"/>
+    <httpEndpoint id="defaultHttpEndpoint" host="*" httpPort="8080"/>
+
+
+    <dataSource  id="DefaultDataSource">
+        <properties serverName="localhost" portNumber="9092"
+                    databaseName="dukes_data"
+                    user="sa"
+                    password="password"/>
+    </dataSource>
+
+    <databaseStore id="defaultDatabaseStore" createTables="true" dropTables="false"
+                   tablePrefix="" dataSourceRef="DefaultDataSource"/>
+
+</server>
