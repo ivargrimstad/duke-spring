@@ -1,0 +1,11 @@
+GET http://localhost:8080/dukes/greetings
+Accept: application/json, text/plain
+
+###
+POST http://localhost:8080/dukes/greetings
+Content-Type: application/json
+
+{
+  "message": "Hola Spring IO 2025",
+  "name": "Duke"
+}

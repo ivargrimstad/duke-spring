@@ -17,6 +17,7 @@
 
     <modules>
         <module>duke-spring-boot</module>
+        <module>duke-spring-jakartaee</module>
     </modules>
 
 </project>
