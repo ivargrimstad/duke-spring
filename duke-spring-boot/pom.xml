@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>dukes</groupId>
-	<artifactId>dukes-spring</artifactId>
+	<artifactId>dukes-spring-boot</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>spring</name>
+	<name>Dukes Spring Boot</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
@@ -21,24 +21,19 @@
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-jpa</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 
 		<dependency>
-			<groupId>com.h2database</groupId>
-			<artifactId>h2</artifactId>
-			<version>2.1.214</version>
-			<scope>runtime</scope>
+			<groupId>jakarta.platform</groupId>
+			<artifactId>jakarta.jakartaee-core-api</artifactId>
+			<version>11.0.0</version>
 		</dependency>
 
 		<dependency>
-			<groupId>jakarta.platform</groupId>
-			<artifactId>jakarta.jakartaee-web-api</artifactId>
-			<version>11.0.0</version>
+			<groupId>dukes</groupId>
+			<artifactId>jakarta-gpt</artifactId>
+			<version>1.0-SNAPSHOT</version>
 		</dependency>
 
 		<dependency>
