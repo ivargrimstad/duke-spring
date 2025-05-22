@@ -1,6 +1,6 @@
 package dukes.spring;
 
-import dukes.ai.JakartaGTP;
+import dukes.ai.JakartaGPT;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
@@ -9,11 +9,11 @@ import org.springframework.web.bind.annotation.*;
 public class GPTResource {
 
     @Autowired
-    private JakartaGTP jakartaGTP;
+    private JakartaGPT model;
 
     @GetMapping(value = "/prompt", produces = MediaType.TEXT_PLAIN_VALUE)
     public String prompt(@RequestParam("message") String message) {
 
-        return jakartaGTP.chat(message);
+        return model.chat(message);
     }
 }

@@ -1,7 +1,7 @@
 package dukes.spring;
 
 
-import dukes.ai.JakartaGTP;
+import dukes.ai.JakartaGPT;
 import jakarta.el.ELResolver;
 import jakarta.el.ExpressionFactory;
 import jakarta.enterprise.context.spi.Context;
@@ -25,14 +25,14 @@ import java.util.Set;
 public class CDIProducer {
 
     @Bean
-    public JakartaGTP jakartaGTP() {
-        return getCDIBean(JakartaGTP.class);
+    public JakartaGPT getJakartaGTP() {
+        return getCDIBean(JakartaGPT.class);
     }
 
     private <T> T getCDIBean(Class<T> beanClass) {
         BeanManager beanManager = getCDIBeanManager();
-         jakarta.enterprise.inject.spi.Bean<T> bean
-                 = (jakarta.enterprise.inject.spi.Bean<T>) beanManager.getBeans(beanClass).iterator().next();
+        jakarta.enterprise.inject.spi.Bean<T> bean
+                = (jakarta.enterprise.inject.spi.Bean<T>) beanManager.getBeans(beanClass).iterator().next();
 
         CreationalContext<T> ctx = beanManager.createCreationalContext(bean);
         T cdiBean = (T) beanManager.getReference(bean, beanClass, ctx);
@@ -45,14 +45,11 @@ public class CDIProducer {
             return (BeanManager) initialContext.lookup("java:comp/BeanManager");
         } catch (NamingException e) {
             return new MyBeanManager();
-//            throw new RuntimeException("Failed to lookup CDI BeanManager", e);
+            //            throw new RuntimeException("Failed to lookup CDI BeanManager", e);
         }
     }
 
-
-
-
-
+    // This is a hack to make the demo work
     class MyBeanManager implements BeanManager {
 
 
@@ -183,7 +180,7 @@ public class CDIProducer {
 
         @Override
         public Object getReference(jakarta.enterprise.inject.spi.Bean<?> bean, Type beanType, CreationalContext<?> ctx) {
-            return new JakartaGTP();
+            return new JakartaGPT();
         }
 
         @Override
@@ -193,7 +190,7 @@ public class CDIProducer {
 
         @Override
         public Set<jakarta.enterprise.inject.spi.Bean<?>> getBeans(Type beanType, Annotation... qualifiers) {
-            return Set.of(new jakarta.enterprise.inject.spi.Bean<JakartaGTP>() {
+            return Set.of(new jakarta.enterprise.inject.spi.Bean<JakartaGPT>() {
                 @Override
                 public Set<Type> getTypes() {
                     return Set.of();
@@ -225,12 +222,12 @@ public class CDIProducer {
                 }
 
                 @Override
-                public JakartaGTP create(CreationalContext<JakartaGTP> creationalContext) {
+                public JakartaGPT create(CreationalContext<JakartaGPT> creationalContext) {
                     return null;
                 }
 
                 @Override
-                public void destroy(JakartaGTP instance, CreationalContext<JakartaGTP> creationalContext) {
+                public void destroy(JakartaGPT instance, CreationalContext<JakartaGPT> creationalContext) {
 
                 }
 
