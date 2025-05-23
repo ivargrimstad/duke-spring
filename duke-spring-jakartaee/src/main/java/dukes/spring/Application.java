@@ -1,5 +1,6 @@
 package dukes.spring;
 
+import dukes.ai.AwesomeJakartaGPTModel;
 import dukes.ai.JakartaGPT;
 import jakarta.enterprise.inject.se.SeContainer;
 import jakarta.enterprise.inject.se.SeContainerInitializer;
@@ -16,6 +17,7 @@ public class Application {
 
 		weldContainer = SeContainerInitializer.newInstance()
 				.addBeanClasses(JakartaGPT.class)
+				.addBeanClasses(AwesomeJakartaGPTModel.class)
 				.initialize();
 
 		SpringApplication.run(Application.class, args);
@@ -23,7 +25,11 @@ public class Application {
 
 	@Bean
 	public JakartaGPT jakartaGPT() {
-
 		return weldContainer.select(JakartaGPT.class).get();
+	}
+
+	@Bean
+	public AwesomeJakartaGPTModel awesomeModel() {
+		return weldContainer.select(AwesomeJakartaGPTModel.class).get();
 	}
 }
