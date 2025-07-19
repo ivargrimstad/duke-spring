@@ -11,7 +11,7 @@ public class GPTResource {
     @Autowired
     private JakartaGPT model;
 
-    @GetMapping(value = "/prompt", produces = MediaType.TEXT_PLAIN_VALUE)
+    @GetMapping(value = "/ai", produces = MediaType.TEXT_PLAIN_VALUE)
     public String prompt(@RequestParam("message") String message) {
 
         return model.chat(message);
